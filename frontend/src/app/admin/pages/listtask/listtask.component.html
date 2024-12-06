@@ -1,0 +1,127 @@
+﻿<div class="task-container">
+    <h2>Task Manager</h2>
+
+    <!-- Add Task Form -->
+    <form (ngSubmit)="addTask()" *ngIf="!editingTask" #taskForm="ngForm">
+        <!-- Form fields with validation -->
+        <input [(ngModel)]="newTask.title" placeholder="Task Title" name="title"
+            required #title="ngModel">
+        <div *ngIf="title.invalid && (title.dirty || title.touched)"
+            class="error">
+            Title is required.
+        </div>
+
+        <input [(ngModel)]="newTask.description" placeholder="Task Description"
+            name="description" required #description="ngModel">
+        <div
+            *ngIf="description.invalid && (description.dirty || description.touched)"
+            class="error">
+            Description is required.
+        </div>
+
+        <p style="margin: 0;">Start Date: </p>
+        <input [(ngModel)]="newTask.startDate" placeholder="Start Date"
+            name="startDate" type="date" required #startDate="ngModel">
+        <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)"
+            class="error">
+            Start date is required.
+        </div>
+
+        <p style="margin: 0;">Due Date: </p>
+        <input [(ngModel)]="newTask.dueDate" placeholder="Due Date"
+            name="dueDate" type="date" required #dueDate="ngModel">
+        <div *ngIf="dueDate.invalid && (dueDate.dirty || dueDate.touched)"
+            class="error">
+            Due date is required.
+        </div>
+        <div class="incharge-container">
+            <input [(ngModel)]="newTask.inchargeName"
+                placeholder="Incharge Name"
+                name="inchargeName" (input)="onInchargeSearch()"
+                [ngModelOptions]="{standalone: true}" required
+                style="width: 94%;"
+                #inchargeName="ngModel" />
+            <div
+                *ngIf="inchargeName.invalid && (inchargeName.dirty || inchargeName.touched)"
+                class="error">
+                Incharge name is required.
+            </div>
+            <!-- Auto-suggestion dropdown -->
+            <ul class="suggestions-list" *ngIf="inchargeSuggestions.length > 0">
+                <li *ngFor="let user of inchargeSuggestions"
+                    (click)="selectIncharge(user)">
+                    {{ user.name }} (ID: {{ user.id }})
+                </li>
+            </ul>
+
+        </div>
+
+        <input [(ngModel)]="newTask.inchargeId" placeholder="Incharge ID"
+            name="inchargeId" type="number" hidden>
+
+        <button type="submit" [disabled]="taskForm.invalid">Add Task</button>
+    </form>
+
+    <!-- Edit Task Form -->
+    <form (ngSubmit)="updateTask()" *ngIf="editingTask" #editForm="ngForm">
+        <input [(ngModel)]="editingTask.title" placeholder="Task Title"
+            name="title" required #editTitle="ngModel">
+        <div *ngIf="editTitle.invalid && (editTitle.dirty || editTitle.touched)"
+            class="error">
+            Title is required.
+        </div>
+
+        <input [(ngModel)]="editingTask.description"
+            placeholder="Task Description" name="description" required
+            #editDescription="ngModel">
+        <div
+            *ngIf="editDescription.invalid && (editDescription.dirty || editDescription.touched)"
+            class="error">
+            Description is required.
+        </div>
+
+        <input [(ngModel)]="editingTask.startDate" placeholder="Start Date"
+            name="startDate" type="date" required #editStartDate="ngModel">
+        <div
+            *ngIf="editStartDate.invalid && (editStartDate.dirty || editStartDate.touched)"
+            class="error">
+            Start date is required.
+        </div>
+
+        <input [(ngModel)]="editingTask.dueDate" placeholder="Due Date"
+            name="dueDate" type="date" required #editDueDate="ngModel">
+        <div
+            *ngIf="editDueDate.invalid && (editDueDate.dirty || editDueDate.touched)"
+            class="error">
+            Due date is required.
+        </div>
+
+        <input [(ngModel)]="editingTask.inchargeId" placeholder="Incharge ID"
+            name="inchargeId" type="number">
+
+        <button type="submit" [disabled]="editForm.invalid">Update Task</button>
+        <button type="button" (click)="editingTask = null">Cancel</button>
+    </form>
+
+    <!-- Filter Dropdown -->
+    <p>Filter by Status:</p>
+    <select (change)="changeFilterStatus($event)">
+        <option value="all">All</option>
+        <option value="completed">Completed</option>
+        <option value="pending">Pending</option>
+    </select>
+
+    <!-- Task List -->
+    <ul>
+        <li *ngFor="let task of filteredTasks" [ngClass]="{'completed-task': task.isCompleted}">
+            <h3>{{ task.title }}</h3>
+            <p>{{ task.description }}</p>
+            <p>Start Date: {{ task.startDate }}</p>
+            <p>Due Date: {{ task.dueDate }}</p>
+            <p>Incharge: {{ task.inchargeName }}</p>
+            <button (click)="editTask(task)">Edit</button>
+            <button (click)="deleteTask(task.id)">Delete</button>
+            <button (click)="completeTask(task.id)" *ngIf="!task.isCompleted">Mark as Completed</button>
+        </li>
+    </ul>
+</div>

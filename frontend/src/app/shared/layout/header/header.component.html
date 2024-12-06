@@ -1,0 +1,13 @@
+﻿<!-- header.component.html -->
+<nav class="navbar">
+    <div class="container">
+        <div>
+            <a class="navbar-brand" href="/">{{ title }}</a>
+            <p>Welcome back {{ userName }}</p>
+        </div>
+        <ul class="navbar-nav">
+            <li><a href="/tasks">Tasks</a></li>
+            <li><a href="javascript:void(0);" (click)="logOut()">Log Out</a></li>
+        </ul>
+    </div>
+</nav>

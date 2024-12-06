@@ -1,0 +1,11 @@
+﻿<div *ngIf="user">
+    <h1>Welcome, {{ user.name }}!</h1>
+    <p>Email: {{ user.email }}</p>
+    <p>Role: {{ user.role }}</p>
+    <!-- Hiển thị thêm thông tin người dùng nếu cần -->
+  </div>
+  
+  <div *ngIf="!user">
+    <p>You are not logged in.</p>
+  </div>
+  

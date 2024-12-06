@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Đảm bảo chiều cao đầy đủ của trang */
+}
+
+app-header {
+    flex-shrink: 0;
+}
+
+app-footer {
+    flex-shrink: 0;
+    margin-top: auto;
+    /* Đẩy footer xuống cuối */
+}
+
+.main {
+    flex-grow: 1;
+}

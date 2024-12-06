@@ -1,0 +1,216 @@
+﻿/* Container styles */
+.task-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.task-container h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Input styles */
+form input[type="text"],
+form input[type="date"],
+form input[type="number"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 15px;
+    font-size: 16px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+    background-color: #fff;
+}
+
+form input {
+    padding: 12px 15px;
+}
+
+/* Input focus styles */
+form input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+}
+
+/* Placeholder style for better readability */
+form input::placeholder {
+    color: #aaa;
+}
+
+/* Submit button styles */
+form button[type="submit"] {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+form button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+form button[type="submit"]:hover:not(:disabled) {
+    background-color: #45a049;
+}
+
+/* Error message styling */
+.error {
+    color: #d9534f;
+    font-size: 12px;
+}
+
+/* Task list styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.task-container ul li {
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Task title styling */
+.task-container ul li h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.task-container ul li p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Task action buttons */
+.task-container ul li button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.task-container ul li button:hover {
+    opacity: 0.9;
+}
+
+/* Button colors */
+.task-container ul li button:nth-child(1) {
+    background-color: #007bff;
+    color: white;
+}
+
+.task-container ul li button:nth-child(2) {
+    background-color: #dc3545;
+    color: white;
+}
+
+.task-container ul li button:nth-child(3) {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Filter dropdown */
+.task-container select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Error message positioning for better UX */
+.error {
+    margin-bottom: 8px;
+}
+
+/* Suggestion Box styles */
+.suggestionBox {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: 150px; /* Limit height */
+    overflow-y: auto; /* Add scroll when there are many suggestions */
+    position: absolute; /* Position the dropdown below the input */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+/* Individual suggestion items */
+.incharge-container {
+    position: relative;
+}
+
+.suggestions-list {
+    width: 100%;
+    position: absolute;
+    top: 100%; /* Position below the input */
+    left: 0;
+    right: 0;
+    border: 1px solid #ccc;
+    background-color: white;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.suggestions-list li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestions-list li:hover {
+    background-color: #f0f0f0;
+}
+
+.completed-task {
+    background-color: #163b1e!important; 
+    border: 1px solid #90d5a0!important;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.completed-task p {
+    color: #fff!important;
+}
+
+.completed-task h3 {
+    color: #fff!important;
+}
